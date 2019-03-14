@@ -81,7 +81,7 @@ def main():
     print('[INFO] approx. FPS: {:.2f}'.format(fps.fps()))
 
     cap.release()
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
