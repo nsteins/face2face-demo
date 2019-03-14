@@ -71,8 +71,8 @@ def main():
 
             if count == args.number:  # only take 400 photos
                 break
-            elif cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+#            elif cv2.waitKey(1) & 0xFF == ord('q'):
+#                break
         else:
             print("No face detected")
 
