@@ -8,6 +8,7 @@ import os
 
 def main():
     # create dataset
+    print("Creating Dataset...")
     train_dataset = tf.data.Dataset.list_files(args.input_dir + '/train/*.png')
     train_dataset = train_dataset.shuffle(pix2pix.settings.BUFFER_SIZE)
     train_dataset = train_dataset.map(pix2pix.utils.load_image_train,
@@ -21,8 +22,11 @@ def main():
     test_dataset = test_dataset.map(pix2pix.utils.load_image_test)
     test_dataset = test_dataset.batch(1)
 
+    print("Creating Pix2Pix Model...")
     model = pix2pix.train.Pix2PixModel(args.checkpoint_dir, args.output_dir)
+    print("Training Model...")
     model.train(train_dataset=train_dataset, test_dataset=test_dataset, epochs=args.epochs)
+    print("Saving Generator Weights...")
     model.generator.save(args.checkpoint_dir+'/generator_weights.h5')
 
 
